@@ -3,6 +3,11 @@ TrueReview
 
 True Review is an attempt to get real reviews/ratings of politicians
 
+Run TrueReview
+==============
+
+In eclipse create a new ```Run Configuration``` with ```service``` as the project, ```com.gsoeller.truereview.TrueReviewApplication``` as the main class and pass ```server service.yml``` as the program arguments.
+
 Database Migrations
 ===================
 
