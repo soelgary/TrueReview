@@ -2,6 +2,7 @@ package com.gsoeller.truereview.crawler;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.logging.LogManager;
 
 import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 import com.gargoylesoftware.htmlunit.WebClient;
@@ -15,6 +16,7 @@ public class PageFetcher {
 	@Inject
 	public PageFetcher(WebClient client) {
 		this.client = client;
+		LogManager.getLogManager().reset();
 	}
 	
 	public HtmlPage fetch(String url) throws FailingHttpStatusCodeException, MalformedURLException, IOException {
