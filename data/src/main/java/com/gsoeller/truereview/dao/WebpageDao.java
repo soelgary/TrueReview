@@ -1,28 +1,22 @@
-package com.gsoeller.truereview.managers;
+package com.gsoeller.truereview.dao;
 
-import java.net.UnknownHostException;
 import java.util.List;
-
-import org.joda.time.DateTime;
 
 import net.vz.mongodb.jackson.DBCursor;
 import net.vz.mongodb.jackson.JacksonDBCollection;
+
+import org.joda.time.DateTime;
 
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import com.gsoeller.truereview.data.Webpage;
 import com.mongodb.DB;
-import com.mongodb.Mongo;
-import com.mongodb.MongoException;
 
-public class WebpageManager {
-	
-	private JacksonDBCollection<Webpage, String> collection;
+public class WebpageDao {
+private JacksonDBCollection<Webpage, String> collection;
 	
 	@Inject
-	public WebpageManager() throws UnknownHostException, MongoException {
-		Mongo mongo = new Mongo("127.0.0.1", 27017);
-		DB db = mongo.getDB("TrueReview");		
+	public WebpageDao(DB db) {
         collection = JacksonDBCollection.wrap(db.getCollection("webpages"), Webpage.class, String.class);
 	}
 	

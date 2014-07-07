@@ -66,7 +66,8 @@ public class Crawler {
 					List<Element> elements = Lists.newArrayList(tags);
 					crawled.add(currentLink);
 					links.addAll(getValidLinks(elements, uri));
-					System.out.println(links);
+					parser.parse(currentLink);
+					return;
 				}
 				currentLink = links.iterator().next();
 				links.remove(currentLink);
