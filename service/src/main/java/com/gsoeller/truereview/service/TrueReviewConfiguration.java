@@ -1,27 +1,21 @@
 package com.gsoeller.truereview.service;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.yammer.dropwizard.config.Configuration;
 
-import io.dropwizard.Configuration;
-import io.dropwizard.db.DataSourceFactory;
 
 public class TrueReviewConfiguration extends Configuration {
 
-	@Valid
-	@NotNull
 	@JsonProperty
-	private DataSourceFactory database = new DataSourceFactory();
-	
-	@JsonProperty("database")
-	public DataSourceFactory getDataSourceFactory() {
-		return database;
-	}
-	
-	@JsonProperty("database")
-	public void setDataSourceFactory(DataSourceFactory dataSourceFactory) {
-		this.database = dataSourceFactory;
-	}
+    @NotEmpty
+    public String mongohost = "127.0.0.1";
+ 
+    @JsonProperty
+    public int mongoport = 27017;
+ 
+    @JsonProperty
+    @NotEmpty
+    public String mongodb = "TrueReview";
 }
