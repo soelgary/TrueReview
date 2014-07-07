@@ -8,6 +8,7 @@ import com.gsoeller.truereview.data.DataModule;
 import com.gsoeller.truereview.healthchecks.MongoHealthCheck;
 import com.gsoeller.truereview.managers.WebpageManager;
 import com.gsoeller.truereview.mongo.MongoManaged;
+import com.gsoeller.truereview.parser.ParserModule;
 import com.gsoeller.truereview.resource.CrawlerResource;
 import com.gsoeller.truereview.resource.WebpageResource;
 import com.mongodb.Mongo;
@@ -30,7 +31,7 @@ public class TrueReviewApplication extends Service<TrueReviewConfiguration>{
 		Mongo mongo = new Mongo(configuration.mongohost, configuration.mongoport);
 		MongoManaged mongoManaged = new MongoManaged(mongo);
 		
-		Injector injector = Guice.createInjector(new DataModule(), new CrawlerModule());
+		Injector injector = Guice.createInjector(new DataModule(), new CrawlerModule(), new ParserModule());
 		
 		environment.manage(mongoManaged);
 		environment.addResource(new WebpageResource(injector.getInstance(WebpageManager.class)));

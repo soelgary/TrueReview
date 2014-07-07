@@ -11,10 +11,6 @@ public class ParserModule extends AbstractModule {
 
 	@Override
 	protected void configure() {
-		//bind(Parser.class).in(Singleton.class);
-		
-		
-		
-		
+		bind(Parser.class).in(Singleton.class);
 	}
 }

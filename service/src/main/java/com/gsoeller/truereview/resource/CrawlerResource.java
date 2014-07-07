@@ -24,7 +24,7 @@ public class CrawlerResource {
 	
 	@GET
 	public boolean crawl() throws FailingHttpStatusCodeException, IOException, URISyntaxException {
-		crawler.crawl(new URI("http://www.gsoeller.com"));
+		crawler.crawl(new URI("http://www.usatoday.com/story/sports/nba/heat/2014/07/06/lebron-james-agent-meet-with-pat-riley-this-week/12278619/"));
 		return true;
 	}
 }

@@ -59,14 +59,14 @@ public class Crawler {
 				logger.info(String.format("Crawling %s adn at depth of %s",
 						currentLink, currentDepth));
 				if (!crawled.contains(currentLink)) {
-					HtmlPage page = fetcher.fetch(currentLink);
+					String page = fetcher.fetch(currentLink);
 					Document doc = new Document(currentLink);
-					doc.html(page.asXml());
+					doc.html(page);
 					Elements tags = doc.select("a[href]");
 					List<Element> elements = Lists.newArrayList(tags);
 					crawled.add(currentLink);
-					links.addAll(getValidLinks(elements, uri));
-					parser.parse(currentLink);
+					//links.addAll(getValidLinks(elements, uri));
+					parser.parse(currentLink, doc);
 					return;
 				}
 				currentLink = links.iterator().next();
